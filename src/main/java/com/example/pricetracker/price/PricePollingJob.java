@@ -28,8 +28,7 @@ public class PricePollingJob {
     /**
      * fixedDelay (not fixedRate): the next run starts only after the previous one finished,
      * so slow Binance responses never cause overlapping runs.
-     * Every exception is caught here, otherwise a failure would be logged by Spring
-     * but nothing would explain what happened; the schedule itself keeps running either way.
+     * Every exception is caught and logged, so one failed call never affects the next runs.
      */
     @Scheduled(fixedDelayString = "${binance.poll-interval}")
     public void poll() {
