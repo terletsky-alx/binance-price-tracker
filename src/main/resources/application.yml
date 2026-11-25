@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: binance-price-tracker
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/prices}
+    username: ${DB_USERNAME:prices}
+    password: ${DB_PASSWORD:prices}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+binance:
+  base-url: ${BINANCE_BASE_URL:https://api.binance.com}
+  symbol: ${BINANCE_SYMBOL:BNBUSDT}
+  poll-interval: ${BINANCE_POLL_INTERVAL:PT30S}
+  connect-timeout: ${BINANCE_CONNECT_TIMEOUT:PT5S}
+  read-timeout: ${BINANCE_READ_TIMEOUT:PT10S}
+
+trend:
+  flat-threshold-percent: ${TREND_FLAT_THRESHOLD_PERCENT:0.5}
+
+scheduling:
+  enabled: true
